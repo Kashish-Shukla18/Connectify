@@ -20,6 +20,7 @@ class MediaFactory extends Factory
 
         $url = $this->getUrl('post');
         $mime = $this->getMime($url);
+        dd($url);
 
         return [
 
@@ -43,23 +44,15 @@ class MediaFactory extends Factory
 
                 $urls = [
 
-                    'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
-                    'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
-                    'https://images.unsplash.com/photo-1683009427692-8a28348b0965?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60',
-                    'https://images.unsplash.com/photo-1695266543586-b4d77d54c3b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60'
-
                 ];
 
                 return $this->faker->randomElement($urls);
                 break;
 
-            case 'reel':
+            case 'community':
 
                 $urls = [
 
-                    'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
-                    'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4',
-                    'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4'
 
                 ];
 
@@ -89,8 +82,8 @@ class MediaFactory extends Factory
     }
 
      #chainable methods
-    function reel() : Factory {
-        $url = $this->getUrl('reel');
+    function community() : Factory {
+        $url = $this->getUrl('community');
         $mime = $this->getMime($url);
 
         return $this->state(function(array $attributes) use($url,$mime) {

@@ -1,5 +1,5 @@
 <div wire:key="comment-{{$comment->id}}" class="flex items-center gap-3 py-2">
-    <x-avatar wire:ignore   src="https://source.unsplash.com/500x500?face-{{rand(1,10)}}" class="h-9 w-9 mb-auto" />
+    <x-avatar wire:ignore src="{{ asset('storage/' . $comment->user->avatar) }}" alt="{{ $comment->user->name }}'s Avatar" class="h-9 w-9 mb-auto"  />
 
     <div class="grid grid-cols-7 w-full gap-2">
 

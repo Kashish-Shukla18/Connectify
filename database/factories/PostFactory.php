@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 namespace Database\Factories;
 
@@ -33,10 +33,10 @@ class PostFactory extends Factory
         
         return $this->afterCreating( function(Post $post){
 
-            if ($post->type=='reel') {
+            if ($post->type=='community') {
 
                 //
-               Media::factory()->reel()->create(['mediable_type'=>get_class($post),'mediable_id'=>$post->id]);
+               Media::factory()->community()->create(['mediable_type'=>get_class($post),'mediable_id'=>$post->id]);
             } else {
 
                 Media::factory()->post()->create(['mediable_type'=>get_class($post),'mediable_id'=>$post->id]);

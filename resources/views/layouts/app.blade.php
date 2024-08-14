@@ -23,12 +23,12 @@
 
         <div class="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-            <div class="drawer-content items-center justify-center">
+            <div class="drawer-content items-center justify-center" style="background-image: linear-gradient(to right bottom, #0d038f, #003ab0, #0060ca, #0084dc, #00a7e9, #00a7e9, #00a7e9, #00a7e9, #0084dc, #0060ca, #003ab0, #0d038f);">
               <!-- Page content here -->
               {{-- <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Open drawer</label> --}}
                 {{$slot}}
             </div> 
-            <div class="drawer-side overflow-visible z-10">
+            <div class="drawer-side md:bg-slate-100 overflow-visible z-10">
               <label for="my-drawer-2" class="drawer-overlay"></label> 
             
               {{-- @include('layouts.sidebar') --}}

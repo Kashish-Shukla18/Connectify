@@ -9,7 +9,7 @@ class Index extends Component
     public function render()
     {
         return <<<'HTML'
-        <div class="w-full h-[calc(100vh_-_0.0rem)] flex bg-white rounded-lg">
+        <div class="w-full h-[calc(100vh_-_0.0rem)] flex bg-blue-200 rounded-lg">
 
             <!-- chatlist -->
             <div class="relative w-full h-full md:w-[320px]  xl:w-[400px] border-r shrink-0 overflow-y-auto">

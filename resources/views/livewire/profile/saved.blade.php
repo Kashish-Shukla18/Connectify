@@ -1,37 +1,26 @@
 <x-profile-layout :user="$user">
-
-    <ul class="grid grid-cols-3 gap-3">
-
-
+    <div class="grid grid-cols-3 gap-4">
         @foreach ($posts as $post)
-
-        @php
-            $cover= $post->media()->first();
-        @endphp
-            
-       
-        <li 
-        onclick="Livewire.dispatch('openModal',{component:'post.view.modal',arguments:{'post':{{$post->id}}}})"
-        class="h-32 md:h-72 w-full cursor-pointer border rounded">
-
-
-            @switch($cover?->mime)
+        <div class="relative group">
+            @php
+            $cover = $post->media()->first();
+            @endphp
+            <div class="overflow-hidden rounded-lg aspect-w-1 aspect-h-1">
+                @switch($cover?->mime)
                 @case('video')
-                    
                 <x-video source="{{$cover->url}}" />
-                    @break
+                @break
                 @case('image')
-
-                <img src="{{$cover->url}}" alt="image" class="h-full w-full object-cover">
-                    
-                    @break
+                <img src="{{$cover->url}}" alt="Cover Image" class="object-cover w-full h-full">
+                @break
                 @default
-                    
-            @endswitch
-
-        </li>
-
+                <!-- Handle other media types or fallback -->
+                @endswitch
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50">
+                <a href="#" onclick="Livewire.dispatch('openModal',{component:'post.view.modal',arguments:{'post':{{$post->id}}}})" class="text-white text-lg"><i class="fas fa-search"></i></a>
+            </div>
+        </div>
         @endforeach
-
-    </ul>
+    </div>
 </x-profile-layout>

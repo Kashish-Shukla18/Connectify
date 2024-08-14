@@ -22,7 +22,7 @@ Echo.private('users.{{auth()->user()->id}}')
 
 class="flex flex-col transition-all h-full overflow-hidden">
 
-    <header class="px-3 z-10 bg-white sticky top-0 w-full py-2 sm:pt-12">
+    <header class="px-3 z-10 bg-blue-200 sticky top-0 w-full py-2 sm:pt-12">
 
         {{-- Title/name and Icon --}}
         <section class=" justify-between flex items-center pb-2">
@@ -45,17 +45,17 @@ class="flex flex-col transition-all h-full overflow-hidden">
         </section>
 
         {{-- Filters --}}
-        <section class="  gap-3 grid grid-cols-3 items-center mt-1 overflow-x-scroll p-2 bg-white">
+        <section class="  gap-3 grid grid-cols-3 items-center mt-1 p-2 bg-blue-200">
 
             <button class="font-semibold flex justify-center text-black border-b-2 border-black pb-2">
                  Primary
             </button>
-            <button class="font-semibold flex justify-center pb-2 text-gray-500">
+            <!-- <button class="font-semibold flex justify-center pb-2 text-gray-500">
                 General
              </button>
              <button class="font-semibold flex justify-center pb-2 text-gray-500">
                 Requests
-             </button>
+             </button> -->
           
         </section>
 
@@ -80,7 +80,7 @@ class="flex flex-col transition-all h-full overflow-hidden">
             <li class="py-3 {{request()?->chat==$conversation?->id?'bg-gray-100':''}} hover:bg-gray-50 rounded-2xl transition-colors duration-150 flex gap-4 relative w-full cursor-pointer px-2">
                 
                 <a href="{{route('profile.home',$receiver->username)}}" class="shrink-0">
-                    <x-avatar wire:ignore  src="https://source.unsplash.com/500x500?face-{{rand(0,10)}}"  class="w-12 h-12" />
+                <x-avatar class="h-7 w-7 lg:w-11 lg:h-11 " src="{{ asset('storage/' . $receiver->avatar) }}" />
                 </a>
 
                 <aside class="grid grid-cols-12 w-full">

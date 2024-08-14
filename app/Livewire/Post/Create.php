@@ -19,7 +19,7 @@ class Create extends ModalComponent
     public $description;
     public $location;
     public $hide_like_view=false;
-    public $allow_commenting=false;
+    public $allow_commenting=true;
 
 
 
@@ -101,10 +101,6 @@ class Create extends ModalComponent
 
             $this->dispatch('post-created',$post->id);
 
-
-
-
-
         }
 
 
@@ -130,7 +126,7 @@ class Create extends ModalComponent
 
     if (count($media)===1 && str()->contains($media[0]->getMimeType(),'video')) {
 
-        return 'reel';
+        return 'community';
     } else {
 
         return 'post';

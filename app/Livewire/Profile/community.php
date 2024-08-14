@@ -6,7 +6,7 @@ use App\Models\User;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
-class Reels extends Component
+class community extends Component
 {
     public $user;
 
@@ -36,7 +36,7 @@ class Reels extends Component
     {
         $this->user = User::whereUsername($this->user->username)->withCount(['followers', 'followings', 'posts'])->firstOrFail();
        
-        $posts=   $this->user->posts()->where('type','reel')->get();
-        return view('livewire.profile.reels',['posts'=>$posts]);
+        $posts=   $this->user->posts()->where('type','community')->get();
+        return view('livewire.profile.community',['posts'=>$posts]);
     }
 }

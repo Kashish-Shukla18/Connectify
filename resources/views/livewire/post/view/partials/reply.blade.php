@@ -1,6 +1,6 @@
 <div wire:key="reply-{{$reply->id}}" class="flex items-center gap-3 w-11/12 ml-auto py-2">
-    <x-avatar wire:ignore  src="https://source.unsplash.com/500x500?face-{{rand(1,10)}}" class="h-8 w-8 mb-auto" />
-
+    <x-avatar wire:ignore  src="{{ asset('storage/' . $reply->user->avatar) }}" class="h-8 w-8 mb-auto" />
+    
     <div class="grid grid-cols-7 w-full gap-2">
 
         {{-- comment  --}}

@@ -35,6 +35,8 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'username' => ['required', 'string', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'batch' => ['required', 'string', 'max:4'],
+            'branch' => ['required', 'string', 'max:3'],
         ]);
 
         $user = User::create([
@@ -42,12 +44,14 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'username' => $request->username,
             'password' => Hash::make($request->password),
+            'batch' => $request->batch,
+            'branch' => $request->branch,
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('verification.notice');
     }
 }

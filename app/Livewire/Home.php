@@ -85,7 +85,7 @@ class Home extends Component
 
     public function render()
     {
-        $suggestedUsers= User::limit(5)->get();
+        $suggestedUsers= User::limit(40)->get();
         return view('livewire.home',['suggestedUsers'=>$suggestedUsers]);
     }
 }

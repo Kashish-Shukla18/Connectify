@@ -33,7 +33,6 @@ class Item extends Component
 
 
     function toggleFavorite()  {
-
         abort_unless(auth()->check(),401);
         auth()->user()->toggleFavorite($this->post);        
     }

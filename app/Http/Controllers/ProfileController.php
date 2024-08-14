@@ -20,22 +20,31 @@ class ProfileController extends Controller
             'user' => $request->user(),
         ]);
     }
+    public function update(Request $request)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255',
+        'about' => 'required|string|max:1000',
+        'avatar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        'batch' => 'required|integer|min:2002|max:2024',
+    ]);
 
-    /**
-     * Update the user's profile information.
-     */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
-    {
-        $request->user()->fill($request->validated());
+    $user = $request->user();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
-
-        $request->user()->save();
-
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+    if ($request->hasFile('avatar')) {
+        $avatarPath = $request->file('avatar')->store('avatars', 'public');
+        $user->avatar = $avatarPath;
     }
+
+    $user->name = $request->input('name');
+    $user->email = $request->input('email');
+    $user->about = $request->input('about');
+    $user->batch = $request->batch;
+    $user->save();
+
+    return redirect()->route('profile.edit')->with('status', 'profile-updated');
+}
 
     /**
      * Delete the user's account.
@@ -57,4 +66,5 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+    
 }
