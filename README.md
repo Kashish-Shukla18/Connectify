@@ -18,3 +18,4 @@
 -   `php artisan serve`
 
 then choose a user from the database and login.
+# Connectify
